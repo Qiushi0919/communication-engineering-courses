@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>通信工程课程总览</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7fb;
+      --panel: #ffffff;
+      --ink: #18202a;
+      --muted: #667085;
+      --line: #dce2ea;
+      --teal: #0f766e;
+      --blue: #2563eb;
+      --amber: #b45309;
+      --rose: #be123c;
+      --green-soft: #e8f5f2;
+      --blue-soft: #eaf1ff;
+      --amber-soft: #fff4df;
+      --rose-soft: #ffeaf0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e 0%, #2563eb 100%);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      font-size: clamp(24px, 3vw, 40px);
+      line-height: 1.15;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #344054;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #eef2f7;
+    }
+
+    main {
+      padding: 26px 0 54px;
+    }
+
+    .summary-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .intro {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro h2,
+    .panel-title {
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      margin: 0;
+      color: #475467;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 112px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric .value {
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .metric .label {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      background: rgba(246, 247, 251, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 12px;
+      min-height: 42px;
+    }
+
+    .search svg {
+      flex: 0 0 auto;
+      color: var(--muted);
+    }
+
+    input[type="search"] {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      font-size: 15px;
+      background: transparent;
+      color: var(--ink);
+      min-width: 0;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #344054;
+      border-radius: 8px;
+      min-height: 42px;
+      padding: 0 13px;
+      font: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    button:hover {
+      border-color: #b8c2d0;
+    }
+
+    button.active {
+      background: #172033;
+      color: #fff;
+      border-color: #172033;
+    }
+
+    .section {
+      margin-top: 24px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin: 0 0 12px;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+      text-align: right;
+    }
+
+    .semester-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .semester {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .semester-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcff;
+    }
+
+    .semester h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .semester-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 9px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      color: #344054;
+      background: #eef2f7;
+      white-space: nowrap;
+    }
+
+    .pill.teal {
+      background: var(--green-soft);
+      color: var(--teal);
+    }
+
+    .pill.blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .pill.amber {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .pill.rose {
+      background: var(--rose-soft);
+      color: var(--rose);
+    }
+
+    .spark {
+      display: grid;
+      grid-template-columns: repeat(5, 12px);
+      align-items: end;
+      gap: 4px;
+      min-height: 34px;
+      justify-content: end;
+    }
+
+    .spark span {
+      display: block;
+      width: 12px;
+      border-radius: 4px 4px 0 0;
+      background: var(--teal);
+      opacity: 0.9;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .course {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      min-height: 142px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .course.hide {
+      display: none;
+    }
+
+    .course-top {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .course-name {
+      font-weight: 760;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .score {
+      flex: 0 0 auto;
+      min-width: 46px;
+      height: 28px;
+      border-radius: 8px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .score.high {
+      color: var(--teal);
+      background: var(--green-soft);
+    }
+
+    .score.warn {
+      color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .score.pending {
+      color: var(--rose);
+      background: var(--rose-soft);
+    }
+
+    .course-data {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      color: #475467;
+      font-size: 12px;
+    }
+
+    .folder-line {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: auto;
+      word-break: break-all;
+    }
+
+    .folder-line a {
+      border-bottom: 1px dotted #98a2b3;
+    }
+
+    .grade-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .grade-table th,
+    .grade-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .grade-table th {
+      background: #f8fafc;
+      color: #344054;
+      font-weight: 760;
+    }
+
+    .grade-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+
+    .archive {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .archive h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .archive p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: minmax(110px, 170px) minmax(120px, 1fr) 70px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      color: #475467;
+    }
+
+    .bar {
+      height: 10px;
+      background: #e7ebf2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+    }
+
+    .empty {
+      display: none;
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .source {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .topbar,
+      .summary-band,
+      .semester-head,
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        padding: 16px 0;
+      }
+
+      nav,
+      .filters {
+        justify-content: flex-start;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .section-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+      }
+
+      .metric-grid,
+      .courses {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .mark {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell topbar">
+      <div class="brand">
+        <div class="mark">CE</div>
+        <div>
+          <h1>通信工程课程总览</h1>
+          <p class="subtitle">通信工程课程资料索引 · 部分成绩已按隐私规则打码</p>
+        </div>
+      </div>
+      <nav aria-label="页面导航">
+        <a href="#courses">课程</a>
+        <a href="#grades">成绩</a>
+        <a href="#archive">资料</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="summary-band" aria-label="总览">
+      <div class="intro">
+        <h2>总览</h2>
+        <p>这个页面把当前课程文件夹里的资料目录，与“前5学期.pdf”成绩单、成绩排名表做了合并整理。成绩单覆盖 2023-2024 学年第 1 学期到 2025-2026 学年第 1 学期；大三下和生产实习目前按文件夹资料列出，等待后续成绩单补充。</p>
+        <p class="source">数据来源：课程资料文件夹、前5学期.pdf、00-电子信息与通信学院2023级成绩排名.xlsx、00-电子信息与通信学院2023级-大三上学期成绩排名.xlsx。生成时间：2026-06-16。</p>
+      </div>
+      <div class="metric-grid">
+        <div class="metric">
+          <span class="value" id="metricCourses">58</span>
+          <span class="label">成绩单课程</span>
+        </div>
+        <div class="metric">
+          <span class="value">已打码</span>
+          <span class="label">加权平均成绩</span>
+        </div>
+        <div class="metric">
+          <span class="value">已打码</span>
+          <span class="label">平均学分绩点</span>
+        </div>
+        <div class="metric">
+          <span class="value">40</span>
+          <span class="label">已挂接课程资料目录</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="筛选">
+      <label class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input id="searchInput" type="search" placeholder="搜索课程、学期、资料类型" autocomplete="off" />
+      </label>
+      <div class="filters" id="filters">
+        <button type="button" class="active" data-filter="all">全部</button>
+        <button type="button" data-filter="graded">有成绩</button>
+        <button type="button" data-filter="material">有资料</button>
+        <button type="button" data-filter="current">大三下/实习</button>
+      </div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-header">
+        <h2>按学期整理</h2>
+        <p class="section-note">每张课程卡显示学分、成绩、资料文件数和主要文件类型。</p>
+      </div>
+      <div class="semester-grid" id="semesterGrid"></div>
+      <div class="empty" id="emptyState">没有匹配的课程。</div>
+    </section>
+
+    <section class="section" id="grades">
+      <div class="section-header">
+        <h2>成绩概览</h2>
+        <p class="section-note">排名表为“重修前”统计口径。</p>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr>
+            <th>范围</th>
+            <th>排名</th>
+            <th>加权成绩</th>
+            <th>学分</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td>统计信息</td>
+            <td>已打码</td>
+            <td>已打码</td>
+            <td>已打码</td>
+            <td>90+ / A-level course grades kept; other stats masked.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="archive">
+      <div class="section-header">
+        <h2>资料归档</h2>
+        <p class="section-note">统计时跳过了压缩包和常见缓存目录。</p>
+      </div>
+      <div class="archive-grid">
+        <div class="archive">
+          <h3>文件夹规模</h3>
+          <p>整个课程文件夹共有约 29,808 个非压缩文件；当前页面挂接的课程资料目录合计约 22,232 个文件。</p>
+        </div>
+        <div class="archive">
+          <h3>资料最密集</h3>
+          <p>ARM 处理器、微机原理实验、软课设、无线通信基础、通信电子线路的资料或代码文件最集中。</p>
+        </div>
+        <div class="archive">
+          <h3>文件类型</h3>
+          <p>代码工程文件很多，主要包括 .c、.h、.py、.m；课程材料常见为 PDF、DOCX、PPTX、图片和实验数据。</p>
+        </div>
+      </div>
+      <div class="bar-list" id="barList"></div>
+    </section>
+  </main>
+
+  <script>
+    const semesters = [
+      {
+        id: "s1",
+        title: "2023-2024 学年 第 1 学期",
+        folder: "1谢秋实2023 大一 上学期",
+        avg: null,
+        status: "official",
+        courses: [
+          { name: "大学生心理健康", credit: 2.0, score: "已打码", folder: "1谢秋实2023 大一 上学期/1.学习 各个学科/心理", files: 3, size: "0.5 MB", types: ".docx:3" },
+          { name: "工程制图（一）", credit: 2.5, score: "已打码", folder: "1谢秋实2023 大一 上学期/1.学习 各个学科/工程制图", files: 10, size: "1.9 MB", types: ".pdf:4, .z3prt:4, .z3drw:2" },
+          { name: "计算机与程序设计基础（C）", credit: 3.5, score: "94", folder: "1谢秋实2023 大一 上学期/1.学习 各个学科/C语言", files: 1, size: "0.3 MB", types: ".docx:1" },
+          { name: "军事理论", credit: 2.0, score: "已打码", folder: "1谢秋实2023 大一 上学期/1.学习 各个学科/军事理论", files: 1, size: "0 MB", types: ".docx:1" },
+          { name: "军事训练", credit: 1.0, score: "91", folder: "1谢秋实2023 大一 上学期/0.入学教育 讲座 团课 军训/军训", files: 1, size: "0.4 MB", types: ".jpg:1" },
+          { name: "思想道德与法治", credit: 2.5, score: "已打码" },
+          { name: "微积分（一）（上）", credit: 5.5, score: "已打码" },
+          { name: "线性代数", credit: 2.5, score: "已打码" },
+          { name: "信息技术导论", credit: 1.5, score: "优", folder: "1谢秋实2023 大一 上学期/1.学习 各个学科/信息技术导论", files: 10, size: "38.0 MB", types: ".docx:6, .pptx:3, .png:1" },
+          { name: "中国语文-古代文学经典与中华文化精神", credit: 2.0, score: "已打码" },
+          { name: "综合英语（一）", credit: 3.5, score: "已打码", folder: "1谢秋实2023 大一 上学期/1.学习 各个学科/English", files: 9, size: "45.2 MB", types: ".docx:5, .pptx:4" },
+          { name: "跆拳道（一）", credit: 0.5, score: "已打码" }
+        ]
+      },
+      {
+        id: "s2",
+        title: "2023-2024 学年 第 2 学期",
+        folder: "2谢秋实2024 大一 下学期",
+        avg: null,
+        status: "official",
+        courses: [
+          { name: "大学物理（一）", credit: 4.0, score: "已打码" },
+          { name: "电工电子工程基础I", credit: 2.0, score: "良" },
+          { name: "电路理论（三）", credit: 4.0, score: "已打码" },
+          { name: "概率论与数理统计", credit: 2.5, score: "93", folder: "2谢秋实2024 大一 下学期/课程/概率论与数理统计", files: 1, size: "5.1 MB", types: ".docx:1" },
+          { name: "工程训练（三）", credit: 1.0, score: "92" },
+          { name: "机器人创意设计及制作", credit: 2.0, score: "96", folder: "2谢秋实2024 大一 下学期/课程/机器人公选课", files: 10, size: "114.3 MB", types: ".mp4:3, .stl:3, .docx:2, .pptx:1" },
+          { name: "数据结构", credit: 3.0, score: "已打码", folder: "2谢秋实2024 大一 下学期/课程/数据结构", files: 3, size: "5.0 MB", types: ".docx:3" },
+          { name: "思政课社会实践", credit: 0.0, score: "已打码", folder: "3谢秋实2023~2024 大一 暑假/思政课社会实践", files: 53, size: "11.7 MB", types: ".docx:29, .pdf:8, .jpg:7, .xlsx:6" },
+          { name: "微积分（一）（下）", credit: 5.5, score: "97" },
+          { name: "物理实验（一）", credit: 1.0, score: "已打码", folder: "2谢秋实2024 大一 下学期/课程/物理实验（一）（丢了很多）", files: 3, size: "0.1 MB", types: ".docx:2, .xlsx:1" },
+          { name: "中国近现代史纲要", credit: 2.5, score: "已打码", folder: "2谢秋实2024 大一 下学期/课程/近代史", files: 1, size: "0 MB", types: ".docx:1" },
+          { name: "综合英语（二）", credit: 3.5, score: "已打码", folder: "2谢秋实2024 大一 下学期/课程/综合英语（二）", files: 14, size: "36.1 MB", types: ".docx:6, .pptx:5, .jpg:2, .pdf:1" },
+          { name: "跆拳道（二）", credit: 1.0, score: "96" }
+        ]
+      },
+      {
+        id: "s3",
+        title: "2024-2025 学年 第 1 学期",
+        folder: "4谢秋实2024大二 上学期",
+        avg: null,
+        status: "official",
+        courses: [
+          { name: "大学物理（二）", credit: 4.0, score: "已打码" },
+          { name: "电路测试实验", credit: 1.0, score: "93" },
+          { name: "电路理论（三）", credit: 4.0, score: "97" },
+          { name: "电子线路设计、测试及实验（一）", credit: 1.0, score: "已打码", folder: "4谢秋实2024大二 上学期/实验课/模电实验报告", files: 13, size: "63.4 MB", types: ".pdf:8, .docx:5" },
+          { name: "复变函数与积分变换", credit: 2.5, score: "94" },
+          { name: "马克思主义基本原理", credit: 2.5, score: "90", folder: "4谢秋实2024大二 上学期/思政课/马原", files: 4, size: "32.7 MB", types: ".docx:2, .doc:1, .pptx:1" },
+          { name: "模拟电子技术（二）", credit: 3.5, score: "已打码", folder: "4谢秋实2024大二 上学期/理论课/模电数电", files: 6, size: "26.6 MB", types: ".pdf:4, .docx:2" },
+          { name: "数字电子技术", credit: 3.0, score: "已打码", folder: "4谢秋实2024大二 上学期/理论课/模电数电", files: 6, size: "26.6 MB", types: ".pdf:4, .docx:2" },
+          { name: "物理实验（二）", credit: 0.75, score: "已打码", folder: "4谢秋实2024大二 上学期/实验课/物理实验", files: 22, size: "53.2 MB", types: ".pdf:8, .docx:7, .xlsx:5, .pptx:2" },
+          { name: "习近平新时代中国特色社会主义思想概论", credit: 3.0, score: "已打码", folder: "4谢秋实2024大二 上学期/思政课/习概", files: 9, size: "196.2 MB", types: ".docx:3, .pptx:3, .pdf:1, .txt:1" },
+          { name: "羽毛球（三）", credit: 0.5, score: "98" }
+        ]
+      },
+      {
+        id: "s4",
+        title: "2024-2025 学年 第 2 学期",
+        folder: "5谢秋实2025大二 下学期 课程专用",
+        avg: null,
+        status: "official",
+        courses: [
+          { name: "电工电子工程基础V", credit: 2.0, score: "良" },
+          { name: "电子线路设计、测试及实验（二）", credit: 1.0, score: "92", folder: "5谢秋实2025大二 下学期 课程专用/数电实验", files: 36, size: "108.0 MB", types: ".pdf:15, .docx:10, .png:9, .ucf:1" },
+          { name: "基础信息论", credit: 2.0, score: "已打码", folder: "5谢秋实2025大二 下学期 课程专用/基础信息论", files: 54, size: "146.9 MB", types: ".pdf:49, .docx:5" },
+          { name: "毛泽东思想和中国特色社会主义理论体系概论", credit: 3.0, score: "已打码", folder: "5谢秋实2025大二 下学期 课程专用/毛概", files: 2, size: "57.7 MB", types: ".docx:1, .mp4:1" },
+          { name: "数理方程与特殊函数", credit: 2.5, score: "94", folder: "5谢秋实2025大二 下学期 课程专用/数理方程", files: 52, size: "133.1 MB", types: ".pdf:39, .jpeg:11, .docx:1, .pptx:1" },
+          { name: "随机过程", credit: 2.0, score: "91", folder: "5谢秋实2025大二 下学期 课程专用/随机过程", files: 12, size: "1398.4 MB", types: ".ppt:8, .pdf:2, .docx:1, .pptx:1" },
+          { name: "微机原理", credit: 3.0, score: "已打码", folder: "5谢秋实2025大二 下学期 课程专用/微机原理", files: 19, size: "1247.8 MB", types: ".pdf:15, .mp4:1, .docx:1, .url:1" },
+          { name: "微机原理实验", credit: 1.0, score: "92", folder: "5谢秋实2025大二 下学期 课程专用/微机原理实验", files: 9392, size: "766.2 MB", types: ".h:1789, .c:1075, .d:1006, .o:1006" },
+          { name: "信号与线性系统（二）", credit: 4.0, score: "已打码", folder: "5谢秋实2025大二 下学期 课程专用/信号与系统", files: 51, size: "118.2 MB", types: ".m:12, .pdf:11, .fig:11, .docx:6" },
+          { name: "羽毛球（四）", credit: 1.0, score: "97" },
+          { name: "运动技能提升", credit: 0.5, score: "100" }
+        ]
+      },
+      {
+        id: "s5",
+        title: "2025-2026 学年 第 1 学期",
+        folder: "7谢秋实2025 大三 上学期 课程专用",
+        avg: null,
+        status: "official",
+        courses: [
+          { name: "ARM处理器及应用", credit: 3.0, score: "已打码", folder: "7谢秋实2025 大三 上学期 课程专用/arm处理器", files: 10439, size: "679.9 MB", types: ".c:6259, .h:1871, .txt:744, .s:511" },
+          { name: "电磁场与电磁波", credit: 2.5, score: "96", folder: "7谢秋实2025 大三 上学期 课程专用/电磁场与电磁波", files: 54, size: "269.0 MB", types: ".pdf:40, .md:4, .png:3, .pptx:2" },
+          { name: "电工电子工程基础III", credit: 2.0, score: "良" },
+          { name: "电工电子工程基础IV", credit: 2.0, score: "优" },
+          { name: "计算机网络", credit: 2.0, score: "92", folder: "7谢秋实2025 大三 上学期 课程专用/计算机网络", files: 48, size: "143.8 MB", types: ".pdf:38, .md:6, .docx:1, .txt:1" },
+          { name: "软件课程设计", credit: 1.0, score: "优", folder: "7谢秋实2025 大三 上学期 课程专用/软课设", files: 647, size: "62.8 MB", types: ".png:276, .svg:159, .py:71, .mm:31" },
+          { name: "数字信号处理", credit: 3.0, score: "已打码", folder: "7谢秋实2025 大三 上学期 课程专用/数字信号处理", files: 44, size: "108.9 MB", types: ".pdf:26, .md:5, .m:4, .wav:4" },
+          { name: "通信电子线路", credit: 3.5, score: "92", folder: "7谢秋实2025 大三 上学期 课程专用/通信电子线路", files: 311, size: "201.9 MB", types: ".pdf:174, .jpg:103, .ms14:9, .docx:7" },
+          { name: "通信原理", credit: 3.5, score: "已打码", folder: "7谢秋实2025 大三 上学期 课程专用/通信原理", files: 141, size: "356.9 MB", types: ".pdf:54, .m:33, .pptx:14, .docx:13" },
+          { name: "游泳（一）", credit: 0.5, score: "已打码" },
+          { name: "珠宝鉴赏（在线课程）", credit: 2.0, score: "93" }
+        ]
+      },
+      {
+        id: "s6",
+        title: "2025-2026 学年 第 2 学期",
+        folder: "8谢秋实2026 大三 下学期 课程专用",
+        status: "current",
+        courses: [
+          { name: "软件无线电", credit: null, score: "待补", folder: "8谢秋实2026 大三 下学期 课程专用/软件无线电", files: 195, size: "16.8 MB", types: ".m:139, .mdl:27, .docx:11, .png:7", current: true },
+          { name: "数字图像处理", credit: null, score: "待补", folder: "8谢秋实2026 大三 下学期 课程专用/数字图像处理", files: 95, size: "294.6 MB", types: ".pdf:29, .png:29, .m:20, .docx:7", current: true },
+          { name: "微波技术基础", credit: null, score: "待补", folder: "8谢秋实2026 大三 下学期 课程专用/微波技术基础", files: 101, size: "331.9 MB", types: ".jpg:38, .pdf:31, .docx:9, .doc:7", current: true },
+          { name: "无线通信基础", credit: null, score: "待补", folder: "8谢秋实2026 大三 下学期 课程专用/无线通信基础", files: 339, size: "137.6 MB", types: ".png:303, .pdf:18, .docx:8, .html:3", current: true },
+          { name: "虚拟仪器", credit: null, score: "待补", folder: "8谢秋实2026 大三 下学期 课程专用/虚拟仪器", files: 24, size: "29.1 MB", types: ".vi:8, .jpg:7, .pdf:5, .rar:1", current: true }
+        ]
+      },
+      {
+        id: "summer",
+        title: "2026 大三暑假",
+        folder: "9谢秋实2026 大三 暑假 生产实习",
+        status: "current",
+        courses: [
+          { name: "生产实习", credit: null, score: "待补", folder: "9谢秋实2026 大三 暑假 生产实习", files: 2, size: "0 MB", types: ".doc:1, .docx:1", current: true }
+        ]
+      }
+    ];
+
+    const branchByCourse = {
+      "大学生心理健康": "course/mental-health",
+      "工程制图（一）": "course/engineering-drawing",
+      "计算机与程序设计基础（C）": "course/c-programming",
+      "军事理论": "course/military-theory",
+      "军事训练": "course/military-training",
+      "信息技术导论": "course/intro-info-tech",
+      "综合英语（一）": "course/college-english-1",
+      "概率论与数理统计": "course/probability-statistics",
+      "机器人创意设计及制作": "course/robot-design",
+      "数据结构": "course/data-structures",
+      "思政课社会实践": "course/social-practice",
+      "物理实验（一）": "course/physics-lab-1",
+      "中国近现代史纲要": "course/modern-chinese-history",
+      "综合英语（二）": "course/college-english-2",
+      "电子线路设计、测试及实验（一）": "course/electronic-circuit-lab-1",
+      "马克思主义基本原理": "course/marxism-principles",
+      "模拟电子技术（二）": "course/analog-electronics",
+      "数字电子技术": "course/digital-electronics",
+      "物理实验（二）": "course/physics-lab-2",
+      "习近平新时代中国特色社会主义思想概论": "course/xi-thought",
+      "电子线路设计、测试及实验（二）": "course/electronic-circuit-lab-2",
+      "基础信息论": "course/information-theory",
+      "毛泽东思想和中国特色社会主义理论体系概论": "course/mao-thought",
+      "数理方程与特殊函数": "course/math-physics-equations",
+      "随机过程": "course/stochastic-processes",
+      "微机原理": "course/microcomputer-principles",
+      "微机原理实验": "course/microcomputer-lab",
+      "信号与线性系统（二）": "course/signals-systems",
+      "ARM处理器及应用": "course/arm-processor",
+      "电磁场与电磁波": "course/electromagnetic-fields",
+      "计算机网络": "course/computer-networks",
+      "软件课程设计": "course/software-course-design",
+      "数字信号处理": "course/digital-signal-processing",
+      "通信电子线路": "course/communication-electronics",
+      "通信原理": "course/communication-principles",
+      "软件无线电": "course/software-defined-radio",
+      "数字图像处理": "course/digital-image-processing",
+      "微波技术基础": "course/microwave-technology",
+      "无线通信基础": "course/wireless-communication",
+      "虚拟仪器": "course/virtual-instrumentation",
+      "生产实习": "course/production-practice"
+    };
+
+    const rankingBars = [
+      { name: "ARM处理器及应用", files: 10439 },
+      { name: "微机原理实验", files: 9392 },
+      { name: "软件课程设计", files: 647 },
+      { name: "无线通信基础", files: 339 },
+      { name: "通信电子线路", files: 311 },
+      { name: "软件无线电", files: 195 },
+      { name: "通信原理", files: 141 },
+      { name: "微波技术基础", files: 101 }
+    ];
+
+    const grid = document.querySelector("#semesterGrid");
+    const emptyState = document.querySelector("#emptyState");
+    const searchInput = document.querySelector("#searchInput");
+    const filters = document.querySelector("#filters");
+    let activeFilter = "all";
+
+    function scoreClass(score) {
+      const text = String(score);
+      if (text === "待补" || text === "缓考") return "pending";
+      if (text === "优" || text === "良") return text === "优" ? "high" : "warn";
+      const n = Number(text);
+      if (Number.isFinite(n) && n >= 90) return "high";
+      if (Number.isFinite(n) && n < 80) return "warn";
+      return "";
+    }
+
+    function creditText(value) {
+      return value === null || value === undefined ? "学分待补" : `${value} 学分`;
+    }
+
+    function encodedBranchPath(branch) {
+      return branch.split("/").map(encodeURIComponent).join("/");
+    }
+
+    function inferGitHubRepo() {
+      if (!location.hostname.endsWith(".github.io")) return null;
+      const owner = location.hostname.split(".")[0];
+      const repo = location.pathname.split("/").filter(Boolean)[0];
+      return owner && repo ? { owner, repo } : null;
+    }
+
+    function folderLink(path, courseName) {
+      if (!path) return "";
+      const branch = branchByCourse[courseName];
+      const repo = branch ? inferGitHubRepo() : null;
+      if (repo) {
+        return `https://github.com/${repo.owner}/${repo.repo}/tree/${encodedBranchPath(branch)}`;
+      }
+      return path.replaceAll("\\", "/");
+    }
+
+    function branchBadge(courseName) {
+      const branch = branchByCourse[courseName];
+      return branch ? `<span class="pill blue">${branch}</span>` : "";
+    }
+
+    function searchable(semester, course) {
+      return [
+        semester.title,
+        semester.folder,
+        course.name,
+        course.score,
+        course.types,
+        course.folder
+      ].filter(Boolean).join(" ").toLowerCase();
+    }
+
+    function courseMatches(semester, course, query) {
+      const byText = !query || searchable(semester, course).includes(query);
+      const byFilter =
+        activeFilter === "all" ||
+        (activeFilter === "graded" && course.score !== "待补") ||
+        (activeFilter === "material" && course.folder) ||
+        (activeFilter === "current" && (course.current || semester.status === "current"));
+      return byText && byFilter;
+    }
+
+    function renderSemesters() {
+      const query = searchInput.value.trim().toLowerCase();
+      grid.innerHTML = "";
+      let visibleCount = 0;
+
+      semesters.forEach((semester) => {
+        const matched = semester.courses.filter((course) => courseMatches(semester, course, query));
+        if (!matched.length) return;
+        visibleCount += matched.length;
+
+        const credits = semester.courses.reduce((sum, course) => sum + (Number(course.credit) || 0), 0);
+        const materialCount = semester.courses.filter((course) => course.folder).length;
+        const courseCount = semester.courses.length;
+        const fileCount = semester.courses.reduce((sum, course) => sum + (Number(course.files) || 0), 0);
+        const avgPill = `<span class="pill blue">加权平均成绩 已打码</span>`;
+        const spark = "";
+
+        const coursesHtml = matched.map((course) => {
+          const path = folderLink(course.folder, course.name);
+          return `
+            <article class="course" data-course="${course.name}">
+              <div class="course-top">
+                <div class="course-name">${course.name}</div>
+                <span class="score ${scoreClass(course.score)}">${course.score}</span>
+              </div>
+              <div class="course-data">
+                <span class="pill">${creditText(course.credit)}</span>
+                ${course.folder ? `<span class="pill teal">${course.files || 0} 文件</span>` : `<span class="pill amber">无挂接目录</span>`}
+                ${course.size ? `<span class="pill">${course.size}</span>` : ""}
+                ${branchBadge(course.name)}
+              </div>
+              <div class="folder-line">
+                ${course.folder ? `<a href="${path}">${course.folder}</a><br>${course.types || ""}` : "成绩单有记录；未在当前资料目录中找到明确课程文件夹。"}
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        const html = `
+          <section class="semester" data-semester="${semester.id}">
+            <div class="semester-head">
+              <div>
+                <h3>${semester.title}</h3>
+                <div class="semester-meta">
+                  <span class="pill teal">${courseCount} 门</span>
+                  <span class="pill">${credits ? credits.toFixed(2).replace(/\.00$/, "") : "学分待补"} 学分</span>
+                  ${avgPill}
+                  <span class="pill amber">${materialCount} 个资料目录</span>
+                  <span class="pill">${fileCount.toLocaleString("zh-CN")} 文件</span>
+                </div>
+              </div>
+              ${spark}
+            </div>
+            <div class="courses">${coursesHtml}</div>
+          </section>
+        `;
+        grid.insertAdjacentHTML("beforeend", html);
+      });
+
+      emptyState.style.display = visibleCount ? "none" : "block";
+    }
+
+    function renderBars() {
+      const holder = document.querySelector("#barList");
+      const max = Math.max(...rankingBars.map((item) => item.files));
+      holder.innerHTML = rankingBars.map((item) => `
+        <div class="bar-row">
+          <strong>${item.name}</strong>
+          <div class="bar"><span style="width:${Math.max(4, item.files / max * 100)}%"></span></div>
+          <span>${item.files.toLocaleString("zh-CN")}</span>
+        </div>
+      `).join("");
+    }
+
+    filters.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-filter]");
+      if (!button) return;
+      filters.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item === button));
+      activeFilter = button.dataset.filter;
+      renderSemesters();
+    });
+
+    searchInput.addEventListener("input", renderSemesters);
+    renderSemesters();
+    renderBars();
+  </script>
+</body>
+</html>

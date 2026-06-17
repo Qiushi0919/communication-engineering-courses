@@ -1,0 +1,73 @@
+# Personal and local workspace files
+.obsidian/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Private academic records
+成绩单/
+00-*.xlsx
+*成绩排名*.xlsx
+
+# Keep main as a lightweight homepage branch.
+# scripts/create-course-branches.ps1 force-adds filtered course files to course branches.
+1谢秋实2023 大一 上学期/
+2谢秋实2024 大一 下学期/
+3谢秋实2023~2024 大一 暑假/
+4谢秋实2024大二 上学期/
+5谢秋实2025大二 下学期 课程专用/
+6谢秋实2025 大二 暑假/
+7谢秋实2025 大三 上学期 课程专用/
+8谢秋实2026 大三 下学期 课程专用/
+9谢秋实2026 大三 暑假 生产实习/
+选修课选课指南/
+
+# Large archives and media. Use Git LFS or Releases if you really need them online.
+*.zip
+*.rar
+*.7z
+*.gz
+*.mp4
+*.mov
+*.avi
+*.mpg
+*.mpeg
+
+# Build outputs, caches, and generated binaries
+**/__pycache__/
+*.pyc
+*.pyo
+*.o
+*.d
+*.obj
+*.exe
+*.dll
+*.elf
+*.axf
+*.bit
+*.bin
+*.hex
+*.map
+*.jou
+*.log
+*.rpt
+*.bak
+*.lock
+
+# IDE, embedded, FPGA, and simulation generated folders
+**/Debug/
+**/Release/
+**/build/
+**/dist/
+**/.Xil/
+**/xsim.dir/
+**/ip_user_files/
+**/*.runs/
+**/*.cache/
+**/*.hw/
+**/*.sim/
+**/*.ip_user_files/
+**/.metadata/
+**/node_modules/
+**/.venv/
+**/venv/
