@@ -10,6 +10,7 @@
 - `课程总览.html`：主页的中文备份文件名
 - `course/...` 分支：每门有资料目录的课程分支
 - `course-branches.json`：课程名称、分支名、资料路径映射
+- `notability-course-notes.json`：Notability 课程笔记目录统计，暂不上传笔记原文件
 - `scripts/create-course-branches.ps1`：根据映射重新生成课程分支
 
 ## 建议的 GitHub 设置
@@ -35,3 +36,7 @@ git push origin 'course/*'
 这个文件夹包含成绩、学号、课堂资料、教材、视频和实验工程文件。`.gitignore` 默认排除了成绩单、成绩排名表、压缩包、视频和常见工程生成文件，避免超过 GitHub 100 MB 单文件限制，也减少隐私和版权风险。
 
 如果确实要上传大型文件，建议使用 Git LFS、GitHub Releases，或继续保存在 OneDrive，只在 README 或主页里放链接。
+
+## Notability 笔记
+
+部分手写笔记位于 `E:\OneDrive\Notability`，不在本仓库目录下。当前已记录课程相关目录统计，但不会自动把日记、待办、入党、地图等非课程目录纳入公开仓库。
