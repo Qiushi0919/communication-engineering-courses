@@ -3,7 +3,7 @@
 这个仓库用于整理通信工程本科课程资料。
 
 - GitHub 仓库：https://github.com/Qiushi0919/communication-engineering-courses
-- GitHub Pages：已关闭；仓库当前为 Private。
+- GitHub Pages：已关闭；仓库当前为 Public。
 
 - `main` 分支：主页与仓库说明
 - `index.html`：GitHub Pages 主页
