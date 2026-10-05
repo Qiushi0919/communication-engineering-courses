@@ -40,3 +40,7 @@ git push origin 'course/*'
 ## Notability 笔记
 
 部分手写笔记位于 `E:\OneDrive\Notability`，不在本仓库目录下。当前已记录课程相关目录统计，但不会自动把日记、待办、入党、地图等非课程目录纳入公开仓库。
+
+## Personal portfolio / 个人主页
+
+[谢秋实 / Qiushi Xie · 中文主页](https://qiushi0919.cn/) · [English portfolio](https://qiushi0919.github.io/)
